@@ -2,11 +2,16 @@
 #include <iostream>
 #include <unistd.h>
 #include <cstdlib>
+#include <cstring>
 
 bool Interface::parseCommandLine(int argc, char* argv[], Params& params) {
     // Установка значений по умолчанию
     params.server_port = 33333;
     params.config_file = "/.config/vclient.conf";
+    
+    // Важно: сбросить optind для повторного использования getopt
+    optind = 1;
+    opterr = 1;  // Включаем вывод ошибок getopt
     
     int opt;
     while ((opt = getopt(argc, argv, "a:p:i:o:c:h")) != -1) {
@@ -29,8 +34,8 @@ bool Interface::parseCommandLine(int argc, char* argv[], Params& params) {
             case 'h': // Справка
                 showHelp();
                 return false;
-            default:
-                std::cerr << "Неизвестный параметр\n";
+            case '?': // Неизвестный параметр
+                // getopt уже вывел сообщение об ошибке
                 showHelp();
                 return false;
         }

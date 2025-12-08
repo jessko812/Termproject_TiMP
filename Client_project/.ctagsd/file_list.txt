@@ -1,9 +1,0 @@
-/home/jessko/Client_project/Client_project/main.cpp
-/home/jessko/Client_project/Client_project/interface.h
-/home/jessko/Client_project/Client_project/interface.cpp
-/home/jessko/Client_project/Client_project/file_handler.h
-/home/jessko/Client_project/Client_project/file_handler.cpp
-/home/jessko/Client_project/Client_project/linux_authenticator.h
-/home/jessko/Client_project/Client_project/linux_authenticator.cpp
-/home/jessko/Client_project/Client_project/network_manager.h
-/home/jessko/Client_project/Client_project/network_manager.cpp
