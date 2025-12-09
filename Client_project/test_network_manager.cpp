@@ -2,13 +2,11 @@
 #include <algorithm>
 #include "linux_authenticator.h"
 
-// Test runner для этого файла
 int main()
 {
     return UnitTest::RunAllTests();
 }
 
-// Мок NetworkManager без наследования
 class MockNetworkManager {
 public:
     MockNetworkManager(const std::string& addr, int p) {}

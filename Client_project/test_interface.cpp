@@ -23,8 +23,7 @@ SUITE(InterfaceTests) {
         
         Params params;
         bool result = Interface::parseCommandLine(argc, argv, params);
-        
-        // help должен возвращать false и показывать справку
+
         CHECK(!result);
         
         delete[] arg0;
@@ -40,8 +39,7 @@ SUITE(InterfaceTests) {
         
         Params params;
         bool result = Interface::parseCommandLine(argc, argv, params);
-        
-        // Должен вернуть false из-за отсутствия обязательных параметров
+      
         CHECK(!result);
         
         delete[] arg0;
@@ -51,7 +49,7 @@ SUITE(InterfaceTests) {
 
     TEST(NEGATIVE_InvalidOption) {
         char* arg0 = strdup("./client");
-        char* arg1 = strdup("-x");  // Неизвестная опция
+        char* arg1 = strdup("-x");
         char* arg2 = strdup("value");
         char* argv[] = {arg0, arg1, arg2, nullptr};
         int argc = 3;
@@ -59,7 +57,6 @@ SUITE(InterfaceTests) {
         Params params;
         bool result = Interface::parseCommandLine(argc, argv, params);
         
-        // Должен вернуть false из-за неизвестной опции
         CHECK(!result);
         
         delete[] arg0;

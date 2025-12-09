@@ -3,7 +3,6 @@
 #include <cstdio>
 #include "file_handler.h"
 
-// Test runner для этого файла
 int main()
 {
     return UnitTest::RunAllTests();
@@ -111,10 +110,6 @@ SUITE(FileHandlerTests) {
         std::ofstream file(filename);
         file << "login:";
         file.close();
-        // Проверяем, что функция не бросает исключение для такого формата
-        // (логин не пустой, пароль может быть пустым)
-        // Если функция должна бросать исключение, измените эту проверку
-        // CHECK_THROW(FileHandler::readCredentials(filename), std::runtime_error);
         auto [login, password] = FileHandler::readCredentials(filename);
         CHECK_EQUAL("login", login);
         CHECK_EQUAL("", password);
@@ -126,10 +121,6 @@ SUITE(FileHandlerTests) {
         std::ofstream file(filename);
         file << ":password";
         file.close();
-        // Проверяем, что функция не бросает исключение для такого формата
-        // (пароль не пустой, логин может быть пустым)
-        // Если функция должна бросать исключение, измените эту проверку
-        // CHECK_THROW(FileHandler::readCredentials(filename), std::runtime_error);
         auto [login, password] = FileHandler::readCredentials(filename);
         CHECK_EQUAL("", login);
         CHECK_EQUAL("password", password);

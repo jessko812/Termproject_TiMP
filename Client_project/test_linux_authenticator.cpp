@@ -1,7 +1,6 @@
 #include <UnitTest++/UnitTest++.h>
 #include "linux_authenticator.h"
 
-// Test runner для этого файла
 int main()
 {
     return UnitTest::RunAllTests();
@@ -12,7 +11,6 @@ SUITE(LinuxAuthenticatorTests) {
         std::string data = "test";
         std::string hash = LinuxAuthenticator::computeSHA224(data);
         CHECK_EQUAL(56u, hash.length());
-        // Проверка: только hex
         for (char c : hash) {
             CHECK((c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F'));
         }
