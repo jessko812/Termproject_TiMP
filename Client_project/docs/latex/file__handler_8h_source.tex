@@ -1,0 +1,23 @@
+\hypertarget{file__handler_8h_source}{}\doxysection{file\+\_\+handler.\+h}
+\mbox{\hyperlink{file__handler_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00010}00010 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00011}00011 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00013}00013 \textcolor{preprocessor}{\#include <cstdint>}}
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00019}\mbox{\hyperlink{structVectorData}{00019}} \textcolor{keyword}{struct }\mbox{\hyperlink{structVectorData}{VectorData}} \{}
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00020}\mbox{\hyperlink{structVectorData_adbd84e4b382729f3db232dcf44f9049a}{00020}}     std::vector<std::vector<int16\_t>> \mbox{\hyperlink{structVectorData_adbd84e4b382729f3db232dcf44f9049a}{vectors}}; }
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00021}00021 \};}
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00027}\mbox{\hyperlink{classFileHandler}{00027}} \textcolor{keyword}{class }\mbox{\hyperlink{classFileHandler}{FileHandler}} \{}
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00028}00028 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00035}00035     \textcolor{keyword}{static} \mbox{\hyperlink{structVectorData}{VectorData}} \mbox{\hyperlink{classFileHandler_a40ad04d87cd57e71eaa818c7ea72cfd6}{readVectors}}(\textcolor{keyword}{const} std::string\& filename);}
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00036}00036     }
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00043}00043     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classFileHandler_a292b1ca23fa9516b11b086aaba4b608d}{writeResults}}(\textcolor{keyword}{const} std::string\& filename, \textcolor{keyword}{const} std::vector<int16\_t>\& results);}
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00044}00044     }
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00051}00051     \textcolor{keyword}{static} std::pair<std::string, std::string> \mbox{\hyperlink{classFileHandler_aa9c310fcce098c9df955334496950b36}{readCredentials}}(\textcolor{keyword}{const} std::string\& filename);}
+\DoxyCodeLine{\Hypertarget{file__handler_8h_source_l00052}00052 \};}
+
+\end{DoxyCode}

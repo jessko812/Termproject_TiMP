@@ -1,0 +1,337 @@
+\hypertarget{classNetworkManager}{}\doxysection{Класс Network\+Manager}
+\label{classNetworkManager}\index{NetworkManager@{NetworkManager}}
+
+
+Класс для управления сетевым соединением с сервером  
+
+
+
+
+{\ttfamily \#include $<$network\+\_\+manager.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classNetworkManager_a5bb24a522d1a4f73a9cfee0ea40b7926}{Network\+Manager}} (const std\+::string \&addr, int p)
+\begin{DoxyCompactList}\small\item\em Конструктор \mbox{\hyperlink{classNetworkManager}{Network\+Manager}}. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classNetworkManager_a2cfe4223139cf58587a9f066b956cb23}{$\sim$\+Network\+Manager}} ()
+\begin{DoxyCompactList}\small\item\em Деструктор \mbox{\hyperlink{classNetworkManager}{Network\+Manager}}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classNetworkManager_a9016d412d2c4a1ecb33b5c7a1783721d}{connect}} ()
+\begin{DoxyCompactList}\small\item\em Устанавливает соединение с сервером \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNetworkManager_a751f87add468a5ddc70c4087ab80533f}{disconnect}} ()
+\begin{DoxyCompactList}\small\item\em Закрывает соединение с сервером \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classNetworkManager_af5326f1181efd375e9480c488715c485}{authenticate}} (const std\+::string \&login, const std\+::string \&password)
+\begin{DoxyCompactList}\small\item\em Выполняет аутентификацию на сервере \end{DoxyCompactList}\item 
+std\+::vector$<$ int16\+\_\+t $>$ \mbox{\hyperlink{classNetworkManager_a041b59a0dce002a17251dad714d652ce}{send\+Vectors}} (const \mbox{\hyperlink{structVectorData}{Vector\+Data}} \&vectors)
+\begin{DoxyCompactList}\small\item\em Отправляет векторы на сервер и получает результаты вычислений \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classNetworkManager_af84c3164e1369415cfb327a47f24c0d1}{send\+Data}} (const void $\ast$data, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Отправляет бинарные данные через сокет \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNetworkManager_a5486fa9c8c2d7536e6430b60a4e49840}{receive\+Data}} (void $\ast$data, size\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em Принимает бинарные данные через сокет \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classNetworkManager_aedf328bafafaa65bbc910d515cbae78a}{receive\+String}} ()
+\begin{DoxyCompactList}\small\item\em Принимает строку через сокет \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classNetworkManager_a830e400508c7c32541d43dac4d8aedd2}{send\+String}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Отправляет строку через сокет \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classNetworkManager_affe013e540b567556a5288403b53a208}{sockfd}}
+\begin{DoxyCompactList}\small\item\em Дескриптор сетевого сокета \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classNetworkManager_a065fc6b77d4710a4fa7424ee0a789076}{address}}
+\begin{DoxyCompactList}\small\item\em Адрес сервера \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classNetworkManager_af7ae9d3adcce857e5e2ce4824c3bb48e}{port}}
+\begin{DoxyCompactList}\small\item\em Порт сервера \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для управления сетевым соединением с сервером 
+
+Обеспечивает подключение, аутентификацию и обмен данными с сервером 
+
+См. определение в файле \mbox{\hyperlink{network__manager_8h_source}{network\+\_\+manager.\+h}} строка \mbox{\hyperlink{network__manager_8h_source_l00021}{21}}
+
+
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classNetworkManager_a5bb24a522d1a4f73a9cfee0ea40b7926}\label{classNetworkManager_a5bb24a522d1a4f73a9cfee0ea40b7926}} 
+\index{NetworkManager@{NetworkManager}!NetworkManager@{NetworkManager}}
+\index{NetworkManager@{NetworkManager}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{NetworkManager()}{NetworkManager()}}
+{\footnotesize\ttfamily Network\+Manager\+::\+Network\+Manager (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{addr,  }\item[{int}]{p }\end{DoxyParamCaption})}
+
+
+
+Конструктор \mbox{\hyperlink{classNetworkManager}{Network\+Manager}}. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em addr} & Адрес сервера \\
+\hline
+{\em p} & Порт сервера \\
+\hline
+\end{DoxyParams}
+
+
+См. определение в файле \mbox{\hyperlink{network__manager_8cpp_source}{network\+\_\+manager.\+cpp}} строка \mbox{\hyperlink{network__manager_8cpp_source_l00013}{13}}
+
+\mbox{\Hypertarget{classNetworkManager_a2cfe4223139cf58587a9f066b956cb23}\label{classNetworkManager_a2cfe4223139cf58587a9f066b956cb23}} 
+\index{NetworkManager@{NetworkManager}!````~NetworkManager@{$\sim$NetworkManager}}
+\index{````~NetworkManager@{$\sim$NetworkManager}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{$\sim$NetworkManager()}{~NetworkManager()}}
+{\footnotesize\ttfamily Network\+Manager\+::$\sim$\+Network\+Manager (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Деструктор \mbox{\hyperlink{classNetworkManager}{Network\+Manager}}. 
+
+Автоматически закрывает соединение при уничтожении объекта 
+
+См. определение в файле \mbox{\hyperlink{network__manager_8cpp_source}{network\+\_\+manager.\+cpp}} строка \mbox{\hyperlink{network__manager_8cpp_source_l00016}{16}}
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classNetworkManager_af5326f1181efd375e9480c488715c485}\label{classNetworkManager_af5326f1181efd375e9480c488715c485}} 
+\index{NetworkManager@{NetworkManager}!authenticate@{authenticate}}
+\index{authenticate@{authenticate}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{authenticate()}{authenticate()}}
+{\footnotesize\ttfamily bool Network\+Manager\+::authenticate (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{login,  }\item[{const std\+::string \&}]{password }\end{DoxyParamCaption})}
+
+
+
+Выполняет аутентификацию на сервере 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em login} & Логин пользователя \\
+\hline
+{\em password} & Пароль пользователя \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true -\/ аутентификация успешна, false -\/ аутентификация не удалась 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при ошибках сетевого обмена \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{network__manager_8cpp_source}{network\+\_\+manager.\+cpp}} строка \mbox{\hyperlink{network__manager_8cpp_source_l00079}{79}}
+
+\mbox{\Hypertarget{classNetworkManager_a9016d412d2c4a1ecb33b5c7a1783721d}\label{classNetworkManager_a9016d412d2c4a1ecb33b5c7a1783721d}} 
+\index{NetworkManager@{NetworkManager}!connect@{connect}}
+\index{connect@{connect}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{connect()}{connect()}}
+{\footnotesize\ttfamily bool Network\+Manager\+::connect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Устанавливает соединение с сервером 
+
+\begin{DoxyReturn}{Возвращает}
+true -\/ соединение установлено 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при ошибках создания сокета или подключения \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{network__manager_8cpp_source}{network\+\_\+manager.\+cpp}} строка \mbox{\hyperlink{network__manager_8cpp_source_l00020}{20}}
+
+\mbox{\Hypertarget{classNetworkManager_a751f87add468a5ddc70c4087ab80533f}\label{classNetworkManager_a751f87add468a5ddc70c4087ab80533f}} 
+\index{NetworkManager@{NetworkManager}!disconnect@{disconnect}}
+\index{disconnect@{disconnect}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{disconnect()}{disconnect()}}
+{\footnotesize\ttfamily void Network\+Manager\+::disconnect (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Закрывает соединение с сервером 
+
+
+
+См. определение в файле \mbox{\hyperlink{network__manager_8cpp_source}{network\+\_\+manager.\+cpp}} строка \mbox{\hyperlink{network__manager_8cpp_source_l00043}{43}}
+
+\mbox{\Hypertarget{classNetworkManager_a5486fa9c8c2d7536e6430b60a4e49840}\label{classNetworkManager_a5486fa9c8c2d7536e6430b60a4e49840}} 
+\index{NetworkManager@{NetworkManager}!receiveData@{receiveData}}
+\index{receiveData@{receiveData}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{receiveData()}{receiveData()}}
+{\footnotesize\ttfamily void Network\+Manager\+::receive\+Data (\begin{DoxyParamCaption}\item[{void $\ast$}]{data,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Принимает бинарные данные через сокет 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em data} & Указатель на буфер для данных \\
+\hline
+{\em size} & Ожидаемый размер данных в байтах \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при ошибке приема \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{network__manager_8cpp_source}{network\+\_\+manager.\+cpp}} строка \mbox{\hyperlink{network__manager_8cpp_source_l00058}{58}}
+
+\mbox{\Hypertarget{classNetworkManager_aedf328bafafaa65bbc910d515cbae78a}\label{classNetworkManager_aedf328bafafaa65bbc910d515cbae78a}} 
+\index{NetworkManager@{NetworkManager}!receiveString@{receiveString}}
+\index{receiveString@{receiveString}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{receiveString()}{receiveString()}}
+{\footnotesize\ttfamily std\+::string Network\+Manager\+::receive\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Принимает строку через сокет 
+
+\begin{DoxyReturn}{Возвращает}
+Принятая строка 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при ошибке приема \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{network__manager_8cpp_source}{network\+\_\+manager.\+cpp}} строка \mbox{\hyperlink{network__manager_8cpp_source_l00065}{65}}
+
+\mbox{\Hypertarget{classNetworkManager_af84c3164e1369415cfb327a47f24c0d1}\label{classNetworkManager_af84c3164e1369415cfb327a47f24c0d1}} 
+\index{NetworkManager@{NetworkManager}!sendData@{sendData}}
+\index{sendData@{sendData}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{sendData()}{sendData()}}
+{\footnotesize\ttfamily void Network\+Manager\+::send\+Data (\begin{DoxyParamCaption}\item[{const void $\ast$}]{data,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Отправляет бинарные данные через сокет 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em data} & Указатель на данные \\
+\hline
+{\em size} & Размер данных в байтах \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при ошибке отправки \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{network__manager_8cpp_source}{network\+\_\+manager.\+cpp}} строка \mbox{\hyperlink{network__manager_8cpp_source_l00051}{51}}
+
+\mbox{\Hypertarget{classNetworkManager_a830e400508c7c32541d43dac4d8aedd2}\label{classNetworkManager_a830e400508c7c32541d43dac4d8aedd2}} 
+\index{NetworkManager@{NetworkManager}!sendString@{sendString}}
+\index{sendString@{sendString}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{sendString()}{sendString()}}
+{\footnotesize\ttfamily void Network\+Manager\+::send\+String (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Отправляет строку через сокет 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em str} & Строка для отправки \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при ошибке отправки \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{network__manager_8cpp_source}{network\+\_\+manager.\+cpp}} строка \mbox{\hyperlink{network__manager_8cpp_source_l00075}{75}}
+
+\mbox{\Hypertarget{classNetworkManager_a041b59a0dce002a17251dad714d652ce}\label{classNetworkManager_a041b59a0dce002a17251dad714d652ce}} 
+\index{NetworkManager@{NetworkManager}!sendVectors@{sendVectors}}
+\index{sendVectors@{sendVectors}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{sendVectors()}{sendVectors()}}
+{\footnotesize\ttfamily std\+::vector$<$ int16\+\_\+t $>$ Network\+Manager\+::send\+Vectors (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structVectorData}{Vector\+Data}} \&}]{vectors }\end{DoxyParamCaption})}
+
+
+
+Отправляет векторы на сервер и получает результаты вычислений 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em vectors} & Данные векторов для отправки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вектор результатов вычислений 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при ошибках сетевого обмена \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{network__manager_8cpp_source}{network\+\_\+manager.\+cpp}} строка \mbox{\hyperlink{network__manager_8cpp_source_l00115}{115}}
+
+
+
+\doxysubsection{Данные класса}
+\mbox{\Hypertarget{classNetworkManager_a065fc6b77d4710a4fa7424ee0a789076}\label{classNetworkManager_a065fc6b77d4710a4fa7424ee0a789076}} 
+\index{NetworkManager@{NetworkManager}!address@{address}}
+\index{address@{address}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{address}{address}}
+{\footnotesize\ttfamily std\+::string Network\+Manager\+::address\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Адрес сервера 
+
+
+
+См. определение в файле \mbox{\hyperlink{network__manager_8h_source}{network\+\_\+manager.\+h}} строка \mbox{\hyperlink{network__manager_8h_source_l00024}{24}}
+
+\mbox{\Hypertarget{classNetworkManager_af7ae9d3adcce857e5e2ce4824c3bb48e}\label{classNetworkManager_af7ae9d3adcce857e5e2ce4824c3bb48e}} 
+\index{NetworkManager@{NetworkManager}!port@{port}}
+\index{port@{port}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{port}{port}}
+{\footnotesize\ttfamily int Network\+Manager\+::port\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Порт сервера 
+
+
+
+См. определение в файле \mbox{\hyperlink{network__manager_8h_source}{network\+\_\+manager.\+h}} строка \mbox{\hyperlink{network__manager_8h_source_l00025}{25}}
+
+\mbox{\Hypertarget{classNetworkManager_affe013e540b567556a5288403b53a208}\label{classNetworkManager_affe013e540b567556a5288403b53a208}} 
+\index{NetworkManager@{NetworkManager}!sockfd@{sockfd}}
+\index{sockfd@{sockfd}!NetworkManager@{NetworkManager}}
+\doxysubsubsection{\texorpdfstring{sockfd}{sockfd}}
+{\footnotesize\ttfamily int Network\+Manager\+::sockfd\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Дескриптор сетевого сокета 
+
+
+
+См. определение в файле \mbox{\hyperlink{network__manager_8h_source}{network\+\_\+manager.\+h}} строка \mbox{\hyperlink{network__manager_8h_source_l00023}{23}}
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{network__manager_8h}{network\+\_\+manager.\+h}}\item 
+network\+\_\+manager.\+cpp\end{DoxyCompactItemize}

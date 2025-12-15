@@ -1,0 +1,154 @@
+\hypertarget{network__manager_8cpp_source}{}\doxysection{network\+\_\+manager.\+cpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{network__manager_8h}{network\_manager.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{linux__authenticator_8h}{linux\_authenticator.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <sys/socket.h>}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <netinet/in.h>}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <arpa/inet.h>}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#include <algorithm>} }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00011}00011 \textcolor{preprocessor}{\#include <cctype>}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00013}\mbox{\hyperlink{classNetworkManager_a5bb24a522d1a4f73a9cfee0ea40b7926}{00013}} \mbox{\hyperlink{classNetworkManager_a5bb24a522d1a4f73a9cfee0ea40b7926}{NetworkManager::NetworkManager}}(\textcolor{keyword}{const} std::string\& addr, \textcolor{keywordtype}{int} p) }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00014}00014     : sockfd(-\/1), address(addr), port(p) \{\}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00016}\mbox{\hyperlink{classNetworkManager_a2cfe4223139cf58587a9f066b956cb23}{00016}} \mbox{\hyperlink{classNetworkManager_a2cfe4223139cf58587a9f066b956cb23}{NetworkManager::\string~NetworkManager}}() \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00017}00017     \mbox{\hyperlink{classNetworkManager_a751f87add468a5ddc70c4087ab80533f}{disconnect}}();}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00018}00018 \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00020}\mbox{\hyperlink{classNetworkManager_a9016d412d2c4a1ecb33b5c7a1783721d}{00020}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classNetworkManager_a9016d412d2c4a1ecb33b5c7a1783721d}{NetworkManager::connect}}() \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00021}00021     \mbox{\hyperlink{classNetworkManager_affe013e540b567556a5288403b53a208}{sockfd}} = socket(AF\_INET, SOCK\_STREAM, 0);}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00022}00022     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classNetworkManager_affe013e540b567556a5288403b53a208}{sockfd}} == -\/1) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00023}00023         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Ошибка создания сокета"{}});}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00024}00024     \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00025}00025 }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00026}00026     sockaddr\_in serv\_addr\{\};}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00027}00027     serv\_addr.sin\_family = AF\_INET;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00028}00028     serv\_addr.sin\_port = htons(\mbox{\hyperlink{classNetworkManager_af7ae9d3adcce857e5e2ce4824c3bb48e}{port}});}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00029}00029     }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00030}00030     \textcolor{keywordflow}{if} (inet\_pton(AF\_INET, \mbox{\hyperlink{classNetworkManager_a065fc6b77d4710a4fa7424ee0a789076}{address}}.c\_str(), \&serv\_addr.sin\_addr) <= 0) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00031}00031         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Неверный адрес: "{}} + \mbox{\hyperlink{classNetworkManager_a065fc6b77d4710a4fa7424ee0a789076}{address}});}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00032}00032     \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00034}00034     std::cout << \textcolor{stringliteral}{"{}Подключение к "{}} << \mbox{\hyperlink{classNetworkManager_a065fc6b77d4710a4fa7424ee0a789076}{address}} << \textcolor{stringliteral}{"{}:"{}} << \mbox{\hyperlink{classNetworkManager_af7ae9d3adcce857e5e2ce4824c3bb48e}{port}} << \textcolor{stringliteral}{"{}..."{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00035}00035     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classNetworkManager_a9016d412d2c4a1ecb33b5c7a1783721d}{::connect}}(\mbox{\hyperlink{classNetworkManager_affe013e540b567556a5288403b53a208}{sockfd}}, (sockaddr*)\&serv\_addr, \textcolor{keyword}{sizeof}(serv\_addr)) < 0) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00036}00036         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Ошибка подключения к "{}} + \mbox{\hyperlink{classNetworkManager_a065fc6b77d4710a4fa7424ee0a789076}{address}} + \textcolor{stringliteral}{"{}:"{}} + std::to\_string(\mbox{\hyperlink{classNetworkManager_af7ae9d3adcce857e5e2ce4824c3bb48e}{port}}));}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00037}00037     \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00039}00039     std::cout << \textcolor{stringliteral}{"{}Подключение установлено успешно"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00040}00040     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00041}00041 \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00043}\mbox{\hyperlink{classNetworkManager_a751f87add468a5ddc70c4087ab80533f}{00043}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classNetworkManager_a751f87add468a5ddc70c4087ab80533f}{NetworkManager::disconnect}}() \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00044}00044     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classNetworkManager_affe013e540b567556a5288403b53a208}{sockfd}} != -\/1) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00045}00045         close(\mbox{\hyperlink{classNetworkManager_affe013e540b567556a5288403b53a208}{sockfd}});}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00046}00046         \mbox{\hyperlink{classNetworkManager_affe013e540b567556a5288403b53a208}{sockfd}} = -\/1;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00047}00047         std::cout << \textcolor{stringliteral}{"{}Соединение закрыто"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00048}00048     \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00049}00049 \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00050}00050 }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00051}\mbox{\hyperlink{classNetworkManager_af84c3164e1369415cfb327a47f24c0d1}{00051}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classNetworkManager_af84c3164e1369415cfb327a47f24c0d1}{NetworkManager::sendData}}(\textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keywordtype}{size\_t} size) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00052}00052     ssize\_t bytes\_sent = send(\mbox{\hyperlink{classNetworkManager_affe013e540b567556a5288403b53a208}{sockfd}}, data, size, 0);}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00053}00053     \textcolor{keywordflow}{if} (bytes\_sent != \textcolor{keyword}{static\_cast<}ssize\_t\textcolor{keyword}{>}(size)) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00054}00054         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Ошибка отправки данных"{}});}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00055}00055     \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00056}00056 \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00058}\mbox{\hyperlink{classNetworkManager_a5486fa9c8c2d7536e6430b60a4e49840}{00058}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classNetworkManager_a5486fa9c8c2d7536e6430b60a4e49840}{NetworkManager::receiveData}}(\textcolor{keywordtype}{void}* data, \textcolor{keywordtype}{size\_t} size) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00059}00059     ssize\_t bytes\_received = recv(\mbox{\hyperlink{classNetworkManager_affe013e540b567556a5288403b53a208}{sockfd}}, data, size, 0);}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00060}00060     \textcolor{keywordflow}{if} (bytes\_received != \textcolor{keyword}{static\_cast<}ssize\_t\textcolor{keyword}{>}(size)) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00061}00061         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Ошибка приема данных"{}});}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00062}00062     \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00063}00063 \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00065}\mbox{\hyperlink{classNetworkManager_aedf328bafafaa65bbc910d515cbae78a}{00065}} std::string \mbox{\hyperlink{classNetworkManager_aedf328bafafaa65bbc910d515cbae78a}{NetworkManager::receiveString}}() \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00066}00066     \textcolor{keywordtype}{char} buffer[1024];}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00067}00067     ssize\_t bytes\_received = recv(\mbox{\hyperlink{classNetworkManager_affe013e540b567556a5288403b53a208}{sockfd}}, buffer, \textcolor{keyword}{sizeof}(buffer) -\/ 1, 0);}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00068}00068     \textcolor{keywordflow}{if} (bytes\_received <= 0) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00069}00069         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Ошибка приема строки"{}});}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00070}00070     \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00071}00071     buffer[bytes\_received] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00072}00072     \textcolor{keywordflow}{return} std::string(buffer);}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00073}00073 \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00075}\mbox{\hyperlink{classNetworkManager_a830e400508c7c32541d43dac4d8aedd2}{00075}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classNetworkManager_a830e400508c7c32541d43dac4d8aedd2}{NetworkManager::sendString}}(\textcolor{keyword}{const} std::string\& str) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00076}00076     \mbox{\hyperlink{classNetworkManager_af84c3164e1369415cfb327a47f24c0d1}{sendData}}(str.c\_str(), str.length());}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00077}00077 \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00079}\mbox{\hyperlink{classNetworkManager_af5326f1181efd375e9480c488715c485}{00079}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classNetworkManager_af5326f1181efd375e9480c488715c485}{NetworkManager::authenticate}}(\textcolor{keyword}{const} std::string\& login, \textcolor{keyword}{const} std::string\& password) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00080}00080     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00081}00081         \textcolor{comment}{//Отправка логина}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00082}00082         \mbox{\hyperlink{classNetworkManager_a830e400508c7c32541d43dac4d8aedd2}{sendString}}(login);}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00083}00083         std::cout << \textcolor{stringliteral}{"{}Отправлен логин: "{}} << login << std::endl;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00084}00084         }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00085}00085         \textcolor{comment}{//Получение соли от сервера или ERR}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00086}00086         std::string salt\_response = \mbox{\hyperlink{classNetworkManager_aedf328bafafaa65bbc910d515cbae78a}{receiveString}}();}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00087}00087         std::cout << \textcolor{stringliteral}{"{}Получена соль от сервера "{}} <<std::endl;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00088}00088         }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00089}00089         \textcolor{keywordflow}{if} (salt\_response == \textcolor{stringliteral}{"{}ERR"{}}) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00090}00090             std::cerr << \textcolor{stringliteral}{"{}Сервер вернул ошибку идентификации"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00091}00091             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00092}00092         \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00093}00093         }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00094}00094         \textcolor{comment}{//Вычисление хеша SHA-\/224(SALT16 || PASSWORD)}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00095}00095         std::string hash = \mbox{\hyperlink{classLinuxAuthenticator_a3bbeac844a52f9ddc58d362b1a73e657}{LinuxAuthenticator::computeSHA224}}(salt\_response, password);}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00096}00096         }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00097}00097         \textcolor{comment}{// ПРЕОБРАЗОВАНИЕ В ВЕРХНИЙ РЕГИСТР}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00098}00098         std::transform(hash.begin(), hash.end(), hash.begin(), }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00099}00099                       [](\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{char} c) \{ return std::toupper(c); \});}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00100}00100         }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00101}00101         \mbox{\hyperlink{classNetworkManager_a830e400508c7c32541d43dac4d8aedd2}{sendString}}(hash);}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00102}00102         std::cout << \textcolor{stringliteral}{"{}Отправлен хеш SHA-\/224 "{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00103}00103         }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00104}00104         \textcolor{comment}{// Получение результата аутентификации}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00105}00105         std::string auth\_response = \mbox{\hyperlink{classNetworkManager_aedf328bafafaa65bbc910d515cbae78a}{receiveString}}();}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00106}00106         std::cout << \textcolor{stringliteral}{"{}Результат аутентификации: "{}} << auth\_response << std::endl;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00107}00107         }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00108}00108         \textcolor{keywordflow}{return} auth\_response == \textcolor{stringliteral}{"{}OK"{}};}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00109}00109         }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00110}00110     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& e) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00111}00111         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Ошибка аутентификации: "{}} + std::string(e.what()));}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00112}00112     \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00113}00113 \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00114}00114 }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00115}\mbox{\hyperlink{classNetworkManager_a041b59a0dce002a17251dad714d652ce}{00115}} std::vector<int16\_t> \mbox{\hyperlink{classNetworkManager_a041b59a0dce002a17251dad714d652ce}{NetworkManager::sendVectors}}(\textcolor{keyword}{const} \mbox{\hyperlink{structVectorData}{VectorData}}\& vectors) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00116}00116     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00117}00117         std::vector<int16\_t> results;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00118}00118         }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00119}00119         \textcolor{comment}{// Отправка количества векторов (uint32\_t)}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00120}00120         uint32\_t num\_vectors = vectors.\mbox{\hyperlink{structVectorData_adbd84e4b382729f3db232dcf44f9049a}{vectors}}.size();}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00121}00121         \mbox{\hyperlink{classNetworkManager_af84c3164e1369415cfb327a47f24c0d1}{sendData}}(\&num\_vectors, \textcolor{keyword}{sizeof}(num\_vectors));}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00122}00122         std::cout << \textcolor{stringliteral}{"{}Отправлено векторов: "{}} << num\_vectors << std::endl;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00123}00123         }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00124}00124         \textcolor{comment}{// Отправка каждого вектора и получение результатов}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00125}00125         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{size\_t} i = 0; i < vectors.\mbox{\hyperlink{structVectorData_adbd84e4b382729f3db232dcf44f9049a}{vectors}}.size(); ++i) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00126}00126             \textcolor{keyword}{const} \textcolor{keyword}{auto}\& vector = vectors.\mbox{\hyperlink{structVectorData_adbd84e4b382729f3db232dcf44f9049a}{vectors}}[i];}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00127}00127             }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00128}00128             \textcolor{comment}{// Отправка размера вектора (uint32\_t)}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00129}00129             uint32\_t vector\_size = vector.size();}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00130}00130             \mbox{\hyperlink{classNetworkManager_af84c3164e1369415cfb327a47f24c0d1}{sendData}}(\&vector\_size, \textcolor{keyword}{sizeof}(vector\_size));}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00131}00131             }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00132}00132             \textcolor{comment}{// Отправка значений вектора (int16\_t)}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00133}00133             \mbox{\hyperlink{classNetworkManager_af84c3164e1369415cfb327a47f24c0d1}{sendData}}(vector.data(), vector\_size * \textcolor{keyword}{sizeof}(int16\_t));}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00134}00134             }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00135}00135             \textcolor{comment}{// Получение результата вычислений (int16\_t)}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00136}00136             int16\_t result;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00137}00137             \mbox{\hyperlink{classNetworkManager_a5486fa9c8c2d7536e6430b60a4e49840}{receiveData}}(\&result, \textcolor{keyword}{sizeof}(result));}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00138}00138             results.push\_back(result);}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00139}00139             }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00140}00140             std::cout << \textcolor{stringliteral}{"{}  Вектор "{}} << i + 1 << \textcolor{stringliteral}{"{} (размер "{}} << vector\_size << \textcolor{stringliteral}{"{}) -\/> результат: "{}} << result << std::endl;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00141}00141         \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00142}00142         }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00143}00143         std::cout << \textcolor{stringliteral}{"{}Все векторы успешно обработаны"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00144}00144         \textcolor{keywordflow}{return} results;}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00145}00145         }
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00146}00146     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& e) \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00147}00147         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Ошибка отправки векторов: "{}} + std::string(e.what()));}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00148}00148     \}}
+\DoxyCodeLine{\Hypertarget{network__manager_8cpp_source_l00149}00149 \}}
+
+\end{DoxyCode}

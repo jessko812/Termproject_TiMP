@@ -1,0 +1,134 @@
+\hypertarget{test__file__handler_8cpp_source}{}\doxysection{test\+\_\+file\+\_\+handler.\+cpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include <UnitTest++/UnitTest++.h>}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <cstdio>}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{file__handler_8h}{file\_handler.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00006}00006 \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}}()}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00007}00007 \{}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00008}00008     \textcolor{keywordflow}{return} UnitTest::RunAllTests();}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00009}00009 \}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00011}00011 \textcolor{keyword}{namespace }\{}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00012}00012     \textcolor{keywordtype}{bool} removeFile(\textcolor{keyword}{const} std::string\& filename) \{}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00013}00013         \textcolor{keywordflow}{return} std::remove(filename.c\_str()) == 0;}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00014}00014     \}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00015}00015 \}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00017}00017 SUITE(FileHandlerTests) \{}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00018}00018     TEST(POSITIVE\_2\_1\_ReadVectors) \{}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00019}00019         std::string filename = \textcolor{stringliteral}{"{}test\_input.bin"{}};}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00020}00020         std::ofstream file(filename, std::ios::binary);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00021}00021         uint32\_t num\_vectors = 2;}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00022}00022         file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&num\_vectors), \textcolor{keyword}{sizeof}(num\_vectors));}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00023}00023         uint32\_t size1 = 3; std::vector<int16\_t> vec1 = \{1, 2, 3\};}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00024}00024         file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&size1), \textcolor{keyword}{sizeof}(size1));}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00025}00025         file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(vec1.data()), size1 * \textcolor{keyword}{sizeof}(int16\_t));}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00026}00026         uint32\_t size2 = 2; std::vector<int16\_t> vec2 = \{10, 20\};}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00027}00027         file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&size2), \textcolor{keyword}{sizeof}(size2));}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00028}00028         file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const }\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(vec2.data()), size2 * \textcolor{keyword}{sizeof}(int16\_t));}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00029}00029         file.close();}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00031}00031         \mbox{\hyperlink{structVectorData}{VectorData}} data = \mbox{\hyperlink{classFileHandler_a40ad04d87cd57e71eaa818c7ea72cfd6}{FileHandler::readVectors}}(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00032}00032         CHECK\_EQUAL(2u, data.\mbox{\hyperlink{structVectorData_adbd84e4b382729f3db232dcf44f9049a}{vectors}}.size());}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00033}00033         CHECK\_EQUAL(3u, data.\mbox{\hyperlink{structVectorData_adbd84e4b382729f3db232dcf44f9049a}{vectors}}[0].size());}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00034}00034         CHECK\_EQUAL(1, data.\mbox{\hyperlink{structVectorData_adbd84e4b382729f3db232dcf44f9049a}{vectors}}[0][0]);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00035}00035         CHECK\_EQUAL(2, data.\mbox{\hyperlink{structVectorData_adbd84e4b382729f3db232dcf44f9049a}{vectors}}[0][1]);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00036}00036         CHECK\_EQUAL(3, data.\mbox{\hyperlink{structVectorData_adbd84e4b382729f3db232dcf44f9049a}{vectors}}[0][2]);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00037}00037         CHECK\_EQUAL(10, data.\mbox{\hyperlink{structVectorData_adbd84e4b382729f3db232dcf44f9049a}{vectors}}[1][0]);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00038}00038         CHECK\_EQUAL(20, data.\mbox{\hyperlink{structVectorData_adbd84e4b382729f3db232dcf44f9049a}{vectors}}[1][1]);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00039}00039 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00040}00040         removeFile(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00041}00041     \}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00043}00043     TEST(POSITIVE\_2\_2\_WriteResults) \{}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00044}00044         std::string filename = \textcolor{stringliteral}{"{}test\_output.bin"{}};}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00045}00045         std::vector<int16\_t> results = \{42, 123, -\/456\};}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00046}00046         \mbox{\hyperlink{classFileHandler_a292b1ca23fa9516b11b086aaba4b608d}{FileHandler::writeResults}}(filename, results);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00048}00048         std::ifstream file(filename, std::ios::binary);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00049}00049         uint32\_t num;}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00050}00050         file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&num), \textcolor{keyword}{sizeof}(num));}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00051}00051         CHECK\_EQUAL(3u, num);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00052}00052         std::vector<int16\_t> read\_results(num);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00053}00053         file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(read\_results.data()), num * \textcolor{keyword}{sizeof}(int16\_t));}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00054}00054         CHECK\_EQUAL(42, read\_results[0]);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00055}00055         CHECK\_EQUAL(123, read\_results[1]);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00056}00056         CHECK\_EQUAL(-\/456, read\_results[2]);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00058}00058         removeFile(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00059}00059     \}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00061}00061     TEST(POSITIVE\_2\_3\_WriteEmptyResults) \{}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00062}00062         std::string filename = \textcolor{stringliteral}{"{}test\_empty.bin"{}};}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00063}00063         std::vector<int16\_t> results;}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00064}00064         \mbox{\hyperlink{classFileHandler_a292b1ca23fa9516b11b086aaba4b608d}{FileHandler::writeResults}}(filename, results);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00066}00066         std::ifstream file(filename, std::ios::binary);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00067}00067         uint32\_t num;}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00068}00068         file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(\&num), \textcolor{keyword}{sizeof}(num));}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00069}00069         CHECK\_EQUAL(0u, num);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00071}00071         removeFile(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00072}00072     \}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00074}00074     TEST(POSITIVE\_2\_4\_ReadCredentials) \{}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00075}00075         std::string filename = \textcolor{stringliteral}{"{}test\_config.conf"{}};}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00076}00076         std::ofstream file(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00077}00077         file << \textcolor{stringliteral}{"{}testuser:testpass"{}};}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00078}00078         file.close();}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00079}00079 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00080}00080         \textcolor{keyword}{auto} [login, password] = \mbox{\hyperlink{classFileHandler_aa9c310fcce098c9df955334496950b36}{FileHandler::readCredentials}}(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00081}00081         CHECK\_EQUAL(\textcolor{stringliteral}{"{}testuser"{}}, login);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00082}00082         CHECK\_EQUAL(\textcolor{stringliteral}{"{}testpass"{}}, password);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00083}00083 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00084}00084         removeFile(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00085}00085     \}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00087}00087     TEST(NEGATIVE\_2\_6\_NonExistentFile) \{}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00088}00088         CHECK\_THROW(\mbox{\hyperlink{classFileHandler_a40ad04d87cd57e71eaa818c7ea72cfd6}{FileHandler::readVectors}}(\textcolor{stringliteral}{"{}nonexistent.bin"{}}), std::runtime\_error);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00089}00089     \}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00090}00090 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00091}00091     TEST(NEGATIVE\_2\_7\_NoColon) \{}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00092}00092         std::string filename = \textcolor{stringliteral}{"{}bad\_config.conf"{}};}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00093}00093         std::ofstream file(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00094}00094         file << \textcolor{stringliteral}{"{}testuser testpass"{}};}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00095}00095         file.close();}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00096}00096         CHECK\_THROW(\mbox{\hyperlink{classFileHandler_aa9c310fcce098c9df955334496950b36}{FileHandler::readCredentials}}(filename), std::runtime\_error);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00097}00097         removeFile(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00098}00098     \}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00100}00100     TEST(NEGATIVE\_2\_8\_EmptyFile) \{}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00101}00101         std::string filename = \textcolor{stringliteral}{"{}empty.conf"{}};}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00102}00102         std::ofstream file(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00103}00103         file.close();}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00104}00104         CHECK\_THROW(\mbox{\hyperlink{classFileHandler_aa9c310fcce098c9df955334496950b36}{FileHandler::readCredentials}}(filename), std::runtime\_error);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00105}00105         removeFile(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00106}00106     \}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00108}00108     TEST(NEGATIVE\_2\_9\_OnlyLogin) \{}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00109}00109         std::string filename = \textcolor{stringliteral}{"{}only\_login.conf"{}};}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00110}00110         std::ofstream file(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00111}00111         file << \textcolor{stringliteral}{"{}login:"{}};}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00112}00112         file.close();}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00113}00113         \textcolor{keyword}{auto} [login, password] = \mbox{\hyperlink{classFileHandler_aa9c310fcce098c9df955334496950b36}{FileHandler::readCredentials}}(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00114}00114         CHECK\_EQUAL(\textcolor{stringliteral}{"{}login"{}}, login);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00115}00115         CHECK\_EQUAL(\textcolor{stringliteral}{"{}"{}}, password);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00116}00116         removeFile(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00117}00117     \}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00119}00119     TEST(NEGATIVE\_2\_10\_OnlyPassword) \{}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00120}00120         std::string filename = \textcolor{stringliteral}{"{}only\_pass.conf"{}};}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00121}00121         std::ofstream file(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00122}00122         file << \textcolor{stringliteral}{"{}:password"{}};}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00123}00123         file.close();}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00124}00124         \textcolor{keyword}{auto} [login, password] = \mbox{\hyperlink{classFileHandler_aa9c310fcce098c9df955334496950b36}{FileHandler::readCredentials}}(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00125}00125         CHECK\_EQUAL(\textcolor{stringliteral}{"{}"{}}, login);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00126}00126         CHECK\_EQUAL(\textcolor{stringliteral}{"{}password"{}}, password);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00127}00127         removeFile(filename);}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00128}00128     \}}
+\DoxyCodeLine{\Hypertarget{test__file__handler_8cpp_source_l00129}00129 \}}
+
+\end{DoxyCode}

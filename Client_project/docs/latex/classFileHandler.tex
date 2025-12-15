@@ -1,0 +1,116 @@
+\hypertarget{classFileHandler}{}\doxysection{Класс File\+Handler}
+\label{classFileHandler}\index{FileHandler@{FileHandler}}
+
+
+Класс для операций чтения/записи файлов  
+
+
+
+
+{\ttfamily \#include $<$file\+\_\+handler.\+h$>$}
+
+\doxysubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{structVectorData}{Vector\+Data}} \mbox{\hyperlink{classFileHandler_a40ad04d87cd57e71eaa818c7ea72cfd6}{read\+Vectors}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Читает векторы из бинарного файла \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classFileHandler_a292b1ca23fa9516b11b086aaba4b608d}{write\+Results}} (const std\+::string \&filename, const std\+::vector$<$ int16\+\_\+t $>$ \&results)
+\begin{DoxyCompactList}\small\item\em Записывает результаты в бинарный файл \end{DoxyCompactList}\item 
+static std\+::pair$<$ std\+::string, std\+::string $>$ \mbox{\hyperlink{classFileHandler_aa9c310fcce098c9df955334496950b36}{read\+Credentials}} (const std\+::string \&filename)
+\begin{DoxyCompactList}\small\item\em Читает учетные данные из файла конфигурации \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для операций чтения/записи файлов 
+
+См. определение в файле \mbox{\hyperlink{file__handler_8h_source}{file\+\_\+handler.\+h}} строка \mbox{\hyperlink{file__handler_8h_source_l00027}{27}}
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classFileHandler_aa9c310fcce098c9df955334496950b36}\label{classFileHandler_aa9c310fcce098c9df955334496950b36}} 
+\index{FileHandler@{FileHandler}!readCredentials@{readCredentials}}
+\index{readCredentials@{readCredentials}!FileHandler@{FileHandler}}
+\doxysubsubsection{\texorpdfstring{readCredentials()}{readCredentials()}}
+{\footnotesize\ttfamily std\+::pair$<$ std\+::string, std\+::string $>$ File\+Handler\+::read\+Credentials (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Читает учетные данные из файла конфигурации 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em filename} & Имя файла конфигурации \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Пара (логин, пароль) 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при ошибках открытия или неверном формате файла \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{file__handler_8cpp_source}{file\+\_\+handler.\+cpp}} строка \mbox{\hyperlink{file__handler_8cpp_source_l00050}{50}}
+
+\mbox{\Hypertarget{classFileHandler_a40ad04d87cd57e71eaa818c7ea72cfd6}\label{classFileHandler_a40ad04d87cd57e71eaa818c7ea72cfd6}} 
+\index{FileHandler@{FileHandler}!readVectors@{readVectors}}
+\index{readVectors@{readVectors}!FileHandler@{FileHandler}}
+\doxysubsubsection{\texorpdfstring{readVectors()}{readVectors()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structVectorData}{Vector\+Data}} File\+Handler\+::read\+Vectors (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Читает векторы из бинарного файла 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em filename} & Имя входного файла \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Структура \mbox{\hyperlink{structVectorData}{Vector\+Data}} с прочитанными векторами 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при ошибках открытия или чтения файла \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{file__handler_8cpp_source}{file\+\_\+handler.\+cpp}} строка \mbox{\hyperlink{file__handler_8cpp_source_l00006}{6}}
+
+\mbox{\Hypertarget{classFileHandler_a292b1ca23fa9516b11b086aaba4b608d}\label{classFileHandler_a292b1ca23fa9516b11b086aaba4b608d}} 
+\index{FileHandler@{FileHandler}!writeResults@{writeResults}}
+\index{writeResults@{writeResults}!FileHandler@{FileHandler}}
+\doxysubsubsection{\texorpdfstring{writeResults()}{writeResults()}}
+{\footnotesize\ttfamily void File\+Handler\+::write\+Results (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{filename,  }\item[{const std\+::vector$<$ int16\+\_\+t $>$ \&}]{results }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Записывает результаты в бинарный файл 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em filename} & Имя выходного файла \\
+\hline
+{\em results} & Вектор результатов для записи \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при ошибках создания или записи файла \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{file__handler_8cpp_source}{file\+\_\+handler.\+cpp}} строка \mbox{\hyperlink{file__handler_8cpp_source_l00037}{37}}
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{file__handler_8h}{file\+\_\+handler.\+h}}\item 
+file\+\_\+handler.\+cpp\end{DoxyCompactItemize}

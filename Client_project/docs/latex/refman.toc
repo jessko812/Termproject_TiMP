@@ -1,0 +1,90 @@
+\@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
+\babel@toc {russian}{}\relax 
+\contentsline {chapter}{\numberline {1}Алфавитный указатель классов}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Классы}{1}{section.1.1}%
+\contentsline {chapter}{\numberline {2}Список файлов}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Файлы}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}Классы}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Класс File\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Handler}{5}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Подробное описание}{5}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Методы}{5}{subsection.3.1.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.1}readCredentials()}{5}{subsubsection.3.1.2.1}%
+\contentsline {subsubsection}{\numberline {3.1.2.2}readVectors()}{6}{subsubsection.3.1.2.2}%
+\contentsline {subsubsection}{\numberline {3.1.2.3}writeResults()}{6}{subsubsection.3.1.2.3}%
+\contentsline {section}{\numberline {3.2}Класс Interface}{7}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Подробное описание}{7}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Методы}{7}{subsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.2.1}parseCommandLine()}{7}{subsubsection.3.2.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2.2}showHelp()}{8}{subsubsection.3.2.2.2}%
+\contentsline {section}{\numberline {3.3}Класс Linux\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Authenticator}{8}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Подробное описание}{9}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Методы}{9}{subsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.1}computeHash()}{9}{subsubsection.3.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.3.2.2}computeSHA224()\hspace {0.1cm}{\footnotesize \ttfamily [1/2]}}{9}{subsubsection.3.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.3.2.3}computeSHA224()\hspace {0.1cm}{\footnotesize \ttfamily [2/2]}}{10}{subsubsection.3.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.3.2.4}createCryptoSocket()}{10}{subsubsection.3.3.2.4}%
+\contentsline {section}{\numberline {3.4}Класс Mock\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Network\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager}{11}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Подробное описание}{11}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Конструктор(ы)}{11}{subsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.2.1}MockNetworkManager()}{11}{subsubsection.3.4.2.1}%
+\contentsline {subsection}{\numberline {3.4.3}Методы}{11}{subsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.3.1}authenticate()}{12}{subsubsection.3.4.3.1}%
+\contentsline {subsubsection}{\numberline {3.4.3.2}connect()}{12}{subsubsection.3.4.3.2}%
+\contentsline {subsubsection}{\numberline {3.4.3.3}sendVectors()}{12}{subsubsection.3.4.3.3}%
+\contentsline {section}{\numberline {3.5}Класс Network\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Manager}{12}{section.3.5}%
+\contentsline {subsection}{\numberline {3.5.1}Подробное описание}{13}{subsection.3.5.1}%
+\contentsline {subsection}{\numberline {3.5.2}Конструктор(ы)}{13}{subsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.2.1}NetworkManager()}{13}{subsubsection.3.5.2.1}%
+\contentsline {subsubsection}{\numberline {3.5.2.2}$\sim $NetworkManager()}{14}{subsubsection.3.5.2.2}%
+\contentsline {subsection}{\numberline {3.5.3}Методы}{14}{subsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.3.1}authenticate()}{14}{subsubsection.3.5.3.1}%
+\contentsline {subsubsection}{\numberline {3.5.3.2}connect()}{14}{subsubsection.3.5.3.2}%
+\contentsline {subsubsection}{\numberline {3.5.3.3}disconnect()}{15}{subsubsection.3.5.3.3}%
+\contentsline {subsubsection}{\numberline {3.5.3.4}receiveData()}{15}{subsubsection.3.5.3.4}%
+\contentsline {subsubsection}{\numberline {3.5.3.5}receiveString()}{15}{subsubsection.3.5.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.3.6}sendData()}{16}{subsubsection.3.5.3.6}%
+\contentsline {subsubsection}{\numberline {3.5.3.7}sendString()}{16}{subsubsection.3.5.3.7}%
+\contentsline {subsubsection}{\numberline {3.5.3.8}sendVectors()}{17}{subsubsection.3.5.3.8}%
+\contentsline {subsection}{\numberline {3.5.4}Данные класса}{17}{subsection.3.5.4}%
+\contentsline {subsubsection}{\numberline {3.5.4.1}address}{17}{subsubsection.3.5.4.1}%
+\contentsline {subsubsection}{\numberline {3.5.4.2}port}{17}{subsubsection.3.5.4.2}%
+\contentsline {subsubsection}{\numberline {3.5.4.3}sockfd}{18}{subsubsection.3.5.4.3}%
+\contentsline {section}{\numberline {3.6}Структура Params}{18}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Подробное описание}{18}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Данные класса}{18}{subsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.2.1}config\_file}{18}{subsubsection.3.6.2.1}%
+\contentsline {subsubsection}{\numberline {3.6.2.2}input\_file}{19}{subsubsection.3.6.2.2}%
+\contentsline {subsubsection}{\numberline {3.6.2.3}output\_file}{19}{subsubsection.3.6.2.3}%
+\contentsline {subsubsection}{\numberline {3.6.2.4}server\_address}{19}{subsubsection.3.6.2.4}%
+\contentsline {subsubsection}{\numberline {3.6.2.5}server\_port}{19}{subsubsection.3.6.2.5}%
+\contentsline {section}{\numberline {3.7}Структура Vector\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}Data}{19}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}Подробное описание}{20}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}Данные класса}{20}{subsection.3.7.2}%
+\contentsline {subsubsection}{\numberline {3.7.2.1}vectors}{20}{subsubsection.3.7.2.1}%
+\contentsline {chapter}{\numberline {4}Файлы}{21}{chapter.4}%
+\contentsline {section}{\numberline {4.1}file\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}handler.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{21}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Файл file\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}handler.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{22}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Подробное описание}{23}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3}file\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}handler.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{23}{section.4.3}%
+\contentsline {section}{\numberline {4.4}interface.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{24}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Файл interface.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{24}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Подробное описание}{25}{subsection.4.5.1}%
+\contentsline {section}{\numberline {4.6}interface.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{26}{section.4.6}%
+\contentsline {section}{\numberline {4.7}linux\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}authenticator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{26}{section.4.7}%
+\contentsline {section}{\numberline {4.8}Файл linux\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}authenticator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{27}{section.4.8}%
+\contentsline {subsection}{\numberline {4.8.1}Подробное описание}{28}{subsection.4.8.1}%
+\contentsline {section}{\numberline {4.9}linux\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}authenticator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{29}{section.4.9}%
+\contentsline {section}{\numberline {4.10}Файл main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{29}{section.4.10}%
+\contentsline {subsection}{\numberline {4.10.1}Подробное описание}{30}{subsection.4.10.1}%
+\contentsline {subsection}{\numberline {4.10.2}Функции}{30}{subsection.4.10.2}%
+\contentsline {subsubsection}{\numberline {4.10.2.1}main()}{30}{subsubsection.4.10.2.1}%
+\contentsline {section}{\numberline {4.11}main.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{31}{section.4.11}%
+\contentsline {section}{\numberline {4.12}network\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}manager.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{31}{section.4.12}%
+\contentsline {section}{\numberline {4.13}Файл network\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}manager.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{33}{section.4.13}%
+\contentsline {subsection}{\numberline {4.13.1}Подробное описание}{34}{subsection.4.13.1}%
+\contentsline {section}{\numberline {4.14}network\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}manager.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}h}{35}{section.4.14}%
+\contentsline {section}{\numberline {4.15}test\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}file\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}handler.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{35}{section.4.15}%
+\contentsline {section}{\numberline {4.16}test\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}interface.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{37}{section.4.16}%
+\contentsline {section}{\numberline {4.17}test\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}linux\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}authenticator.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{38}{section.4.17}%
+\contentsline {section}{\numberline {4.18}test\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}network\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}manager.\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}cpp}{39}{section.4.18}%
+\contentsline {chapter}{{\cyrillictext \CYRP \cyrr \cyre \cyrd \cyrm \cyre \cyrt \cyrn \cyrery \cyrishrt \ \cyru \cyrk \cyra \cyrz \cyra \cyrt \cyre \cyrl \cyrsftsn }}{41}{section*.25}%

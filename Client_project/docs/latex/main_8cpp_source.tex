@@ -1,0 +1,57 @@
+\hypertarget{main_8cpp_source}{}\doxysection{main.\+cpp}
+\mbox{\hyperlink{main_8cpp}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#include <exception>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{interface_8h}{interface.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{file__handler_8h}{file\_handler.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{network__manager_8h}{network\_manager.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}\mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{00030}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}* argv[]) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00032}00032         \mbox{\hyperlink{structParams}{Params}} params;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00033}00033         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00034}00034         \textcolor{comment}{// Разбор командной строки}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00035}00035         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{classInterface_acacb3337d481b58de472c5a3d1d98969}{Interface::parseCommandLine}}(argc, argv, params)) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00036}00036             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00037}00037         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}00038         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}00039         std::cout << \textcolor{stringliteral}{"{}=== Сетевой клиент ==="{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040         std::cout << \textcolor{stringliteral}{"{}Сервер: "{}} << params.\mbox{\hyperlink{structParams_a50b405b5422d5cb84a1b8d446cddf1ea}{server\_address}} << \textcolor{stringliteral}{"{}:"{}} << params.\mbox{\hyperlink{structParams_a319ae4873736c78f2608e9f6f11cb2aa}{server\_port}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}00041         std::cout << \textcolor{stringliteral}{"{}Входной файл: "{}} << params.\mbox{\hyperlink{structParams_aa90b56aa82f503da0c9bba09d8f61f48}{input\_file}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00042}00042         std::cout << \textcolor{stringliteral}{"{}Выходной файл: "{}} << params.\mbox{\hyperlink{structParams_afa18c57156c85a592764d81b5449abd2}{output\_file}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}00043         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00044}00044         \textcolor{comment}{// Чтение учетных данных}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00045}00045         \textcolor{keyword}{auto} [login, password] = \mbox{\hyperlink{classFileHandler_aa9c310fcce098c9df955334496950b36}{FileHandler::readCredentials}}(params.\mbox{\hyperlink{structParams_a2229f9d1374d5ba5b0b6bcd33938d8d8}{config\_file}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00046}00046         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00047}00047         \textcolor{comment}{// Чтение векторов}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00048}00048         \mbox{\hyperlink{structVectorData}{VectorData}} vectors = \mbox{\hyperlink{classFileHandler_a40ad04d87cd57e71eaa818c7ea72cfd6}{FileHandler::readVectors}}(params.\mbox{\hyperlink{structParams_aa90b56aa82f503da0c9bba09d8f61f48}{input\_file}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00049}00049         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00050}00050         \textcolor{comment}{// Сетевое взаимодействие}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00051}00051         \mbox{\hyperlink{classNetworkManager}{NetworkManager}} netManager(params.\mbox{\hyperlink{structParams_a50b405b5422d5cb84a1b8d446cddf1ea}{server\_address}}, params.\mbox{\hyperlink{structParams_a319ae4873736c78f2608e9f6f11cb2aa}{server\_port}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00052}00052         netManager.\mbox{\hyperlink{classNetworkManager_a9016d412d2c4a1ecb33b5c7a1783721d}{connect}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00053}00053         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00054}00054         \textcolor{keywordflow}{if} (!netManager.\mbox{\hyperlink{classNetworkManager_af5326f1181efd375e9480c488715c485}{authenticate}}(login, password)) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00055}00055             std::cerr << \textcolor{stringliteral}{"{}Ошибка аутентификации"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}00056             \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059         std::vector<int16\_t> results = netManager.\mbox{\hyperlink{classNetworkManager_a041b59a0dce002a17251dad714d652ce}{sendVectors}}(vectors);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060         netManager.\mbox{\hyperlink{classNetworkManager_a751f87add468a5ddc70c4087ab80533f}{disconnect}}();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062         \textcolor{comment}{// Сохранение результатов}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063         \mbox{\hyperlink{classFileHandler_a292b1ca23fa9516b11b086aaba4b608d}{FileHandler::writeResults}}(params.\mbox{\hyperlink{structParams_afa18c57156c85a592764d81b5449abd2}{output\_file}}, results);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00064}00064         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065         std::cout << \textcolor{stringliteral}{"{}============================================="{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066         std::cout << \textcolor{stringliteral}{"{}Программа успешно завершена!"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067         }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& e) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069         std::cerr << \textcolor{stringliteral}{"{}Ошибка: "{}} << e.what() << std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072     }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074 \}}
+
+\end{DoxyCode}

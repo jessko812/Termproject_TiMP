@@ -1,0 +1,155 @@
+\hypertarget{classLinuxAuthenticator}{}\doxysection{Класс Linux\+Authenticator}
+\label{classLinuxAuthenticator}\index{LinuxAuthenticator@{LinuxAuthenticator}}
+
+
+Класс для вычисления хеш-\/сумм с использованием Linux Crypto API через сокеты AF\+\_\+\+ALG.  
+
+
+
+
+{\ttfamily \#include $<$linux\+\_\+authenticator.\+h$>$}
+
+\doxysubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classLinuxAuthenticator_a3bbeac844a52f9ddc58d362b1a73e657}{compute\+SHA224}} (const std\+::string \&data)
+\begin{DoxyCompactList}\small\item\em Вычисляет SHA-\/224 хеш для строки данных \end{DoxyCompactList}\item 
+static std\+::string \mbox{\hyperlink{classLinuxAuthenticator_a43ff3b3301d0bb6819bcec9fded842dc}{compute\+SHA224}} (const std\+::string \&salt, const std\+::string \&password)
+\begin{DoxyCompactList}\small\item\em Вычисляет SHA-\/224 хеш для комбинации соли и пароля \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{classLinuxAuthenticator_ae6044e8f55b65bbff25714ccb39065a8}{create\+Crypto\+Socket}} (const std\+::string \&algorithm)
+\begin{DoxyCompactList}\small\item\em Создает криптографический сокет для указанного алгоритма \end{DoxyCompactList}\item 
+static std\+::vector$<$ uint8\+\_\+t $>$ \mbox{\hyperlink{classLinuxAuthenticator_ab411c4fe3360ed9e844c8b686614ca6c}{compute\+Hash}} (int crypto\+\_\+sock, const std\+::string \&data)
+\begin{DoxyCompactList}\small\item\em Вычисляет хеш для данных с использованием созданного криптосокета \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для вычисления хеш-\/сумм с использованием Linux Crypto API через сокеты AF\+\_\+\+ALG. 
+
+Предоставляет статические методы для вычисления SHA-\/224 хешей для данных и комбинации соли с паролем 
+
+См. определение в файле \mbox{\hyperlink{linux__authenticator_8h_source}{linux\+\_\+authenticator.\+h}} строка \mbox{\hyperlink{linux__authenticator_8h_source_l00019}{19}}
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classLinuxAuthenticator_ab411c4fe3360ed9e844c8b686614ca6c}\label{classLinuxAuthenticator_ab411c4fe3360ed9e844c8b686614ca6c}} 
+\index{LinuxAuthenticator@{LinuxAuthenticator}!computeHash@{computeHash}}
+\index{computeHash@{computeHash}!LinuxAuthenticator@{LinuxAuthenticator}}
+\doxysubsubsection{\texorpdfstring{computeHash()}{computeHash()}}
+{\footnotesize\ttfamily std\+::vector$<$ uint8\+\_\+t $>$ Linux\+Authenticator\+::compute\+Hash (\begin{DoxyParamCaption}\item[{int}]{crypto\+\_\+sock,  }\item[{const std\+::string \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Вычисляет хеш для данных с использованием созданного криптосокета 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em crypto\+\_\+sock} & Дескриптор криптографического сокета \\
+\hline
+{\em data} & Данные для хеширования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Вектор байтов с вычисленным хешем 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при ошибках передачи данных или получения хеша \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{linux__authenticator_8cpp_source}{linux\+\_\+authenticator.\+cpp}} строка \mbox{\hyperlink{linux__authenticator_8cpp_source_l00039}{39}}
+
+\mbox{\Hypertarget{classLinuxAuthenticator_a3bbeac844a52f9ddc58d362b1a73e657}\label{classLinuxAuthenticator_a3bbeac844a52f9ddc58d362b1a73e657}} 
+\index{LinuxAuthenticator@{LinuxAuthenticator}!computeSHA224@{computeSHA224}}
+\index{computeSHA224@{computeSHA224}!LinuxAuthenticator@{LinuxAuthenticator}}
+\doxysubsubsection{\texorpdfstring{computeSHA224()}{computeSHA224()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::string Linux\+Authenticator\+::compute\+SHA224 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Вычисляет SHA-\/224 хеш для строки данных 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em data} & Входные данные для хеширования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+SHA-\/224 хеш в виде шестнадцатеричной строки 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при ошибках создания сокета или вычисления хеша \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{linux__authenticator_8cpp_source}{linux\+\_\+authenticator.\+cpp}} строка \mbox{\hyperlink{linux__authenticator_8cpp_source_l00071}{71}}
+
+\mbox{\Hypertarget{classLinuxAuthenticator_a43ff3b3301d0bb6819bcec9fded842dc}\label{classLinuxAuthenticator_a43ff3b3301d0bb6819bcec9fded842dc}} 
+\index{LinuxAuthenticator@{LinuxAuthenticator}!computeSHA224@{computeSHA224}}
+\index{computeSHA224@{computeSHA224}!LinuxAuthenticator@{LinuxAuthenticator}}
+\doxysubsubsection{\texorpdfstring{computeSHA224()}{computeSHA224()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::string Linux\+Authenticator\+::compute\+SHA224 (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{salt,  }\item[{const std\+::string \&}]{password }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Вычисляет SHA-\/224 хеш для комбинации соли и пароля 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em salt} & Соль для хеширования \\
+\hline
+{\em password} & Пароль для хеширования \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+SHA-\/224 хеш в виде шестнадцатеричной строки (соль + пароль) 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при ошибках создания сокета или вычисления хеша \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{linux__authenticator_8cpp_source}{linux\+\_\+authenticator.\+cpp}} строка \mbox{\hyperlink{linux__authenticator_8cpp_source_l00097}{97}}
+
+\mbox{\Hypertarget{classLinuxAuthenticator_ae6044e8f55b65bbff25714ccb39065a8}\label{classLinuxAuthenticator_ae6044e8f55b65bbff25714ccb39065a8}} 
+\index{LinuxAuthenticator@{LinuxAuthenticator}!createCryptoSocket@{createCryptoSocket}}
+\index{createCryptoSocket@{createCryptoSocket}!LinuxAuthenticator@{LinuxAuthenticator}}
+\doxysubsubsection{\texorpdfstring{createCryptoSocket()}{createCryptoSocket()}}
+{\footnotesize\ttfamily int Linux\+Authenticator\+::create\+Crypto\+Socket (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{algorithm }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Создает криптографический сокет для указанного алгоритма 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em algorithm} & Название алгоритма хеширования (например, \char`\"{}sha224\char`\"{}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Дескриптор криптографического сокета 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Исключения}
+{\em std\+::runtime\+\_\+error} & при ошибках создания или привязки сокета \\
+\hline
+\end{DoxyExceptions}
+
+
+См. определение в файле \mbox{\hyperlink{linux__authenticator_8cpp_source}{linux\+\_\+authenticator.\+cpp}} строка \mbox{\hyperlink{linux__authenticator_8cpp_source_l00013}{13}}
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{linux__authenticator_8h}{linux\+\_\+authenticator.\+h}}\item 
+linux\+\_\+authenticator.\+cpp\end{DoxyCompactItemize}

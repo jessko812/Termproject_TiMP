@@ -1,0 +1,71 @@
+\hypertarget{interface_8cpp_source}{}\doxysection{interface.\+cpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{interface_8h}{interface.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <cstdlib>}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00007}\mbox{\hyperlink{classInterface_acacb3337d481b58de472c5a3d1d98969}{00007}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classInterface_acacb3337d481b58de472c5a3d1d98969}{Interface::parseCommandLine}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}* argv[], \mbox{\hyperlink{structParams}{Params}}\& params) \{}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00008}00008     \textcolor{comment}{// Установка значений по умолчанию}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00009}00009     params.\mbox{\hyperlink{structParams_a319ae4873736c78f2608e9f6f11cb2aa}{server\_port}} = 33333;}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00010}00010     params.\mbox{\hyperlink{structParams_a2229f9d1374d5ba5b0b6bcd33938d8d8}{config\_file}} = \textcolor{stringliteral}{"{}/.config/vclient.conf"{}};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00011}00011     }
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00012}00012     \textcolor{comment}{// Важно: сбросить optind для повторного использования getopt}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00013}00013     optind = 1;}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00014}00014     opterr = 1;  \textcolor{comment}{// Включаем вывод ошибок getopt}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00015}00015     }
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00016}00016     \textcolor{keywordtype}{int} opt;}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00017}00017     \textcolor{keywordflow}{while} ((opt = getopt(argc, argv, \textcolor{stringliteral}{"{}a:p:i:o:c:h"{}})) != -\/1) \{}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00018}00018         \textcolor{keywordflow}{switch} (opt) \{}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00019}00019             \textcolor{keywordflow}{case} \textcolor{charliteral}{'a'}: \textcolor{comment}{// Адрес сервера}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00020}00020                 params.\mbox{\hyperlink{structParams_a50b405b5422d5cb84a1b8d446cddf1ea}{server\_address}} = optarg;}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00021}00021                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00022}00022             \textcolor{keywordflow}{case} \textcolor{charliteral}{'p'}: \textcolor{comment}{// Порт сервера}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00023}00023                 params.\mbox{\hyperlink{structParams_a319ae4873736c78f2608e9f6f11cb2aa}{server\_port}} = std::stoi(optarg);}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00024}00024                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00025}00025             \textcolor{keywordflow}{case} \textcolor{charliteral}{'i'}: \textcolor{comment}{// Входной файл}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00026}00026                 params.\mbox{\hyperlink{structParams_aa90b56aa82f503da0c9bba09d8f61f48}{input\_file}} = optarg;}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00027}00027                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00028}00028             \textcolor{keywordflow}{case} \textcolor{charliteral}{'o'}: \textcolor{comment}{// Выходной файл}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00029}00029                 params.\mbox{\hyperlink{structParams_afa18c57156c85a592764d81b5449abd2}{output\_file}} = optarg;}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00030}00030                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00031}00031             \textcolor{keywordflow}{case} \textcolor{charliteral}{'c'}: \textcolor{comment}{// Конфигурационный файл}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00032}00032                 params.\mbox{\hyperlink{structParams_a2229f9d1374d5ba5b0b6bcd33938d8d8}{config\_file}} = optarg;}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00033}00033                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00034}00034             \textcolor{keywordflow}{case} \textcolor{charliteral}{'h'}: \textcolor{comment}{// Справка}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00035}00035                 \mbox{\hyperlink{classInterface_a13fee57d19a34f658d7373492a8c5df0}{showHelp}}();}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00036}00036                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00037}00037             \textcolor{keywordflow}{case} \textcolor{charliteral}{'?'}: \textcolor{comment}{// Неизвестный параметр}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00038}00038                 \textcolor{comment}{// getopt уже вывел сообщение об ошибке}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00039}00039                 \mbox{\hyperlink{classInterface_a13fee57d19a34f658d7373492a8c5df0}{showHelp}}();}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00040}00040                 \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00041}00041         \}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00042}00042     \}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00043}00043     }
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00044}00044     \textcolor{comment}{// Проверка обязательных параметров}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00045}00045     \textcolor{keywordflow}{if} (params.\mbox{\hyperlink{structParams_a50b405b5422d5cb84a1b8d446cddf1ea}{server\_address}}.empty() || params.\mbox{\hyperlink{structParams_aa90b56aa82f503da0c9bba09d8f61f48}{input\_file}}.empty() || params.\mbox{\hyperlink{structParams_afa18c57156c85a592764d81b5449abd2}{output\_file}}.empty()) \{}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00046}00046         std::cerr << \textcolor{stringliteral}{"{}Ошибка: обязательные параметры не указаны\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00047}00047         \mbox{\hyperlink{classInterface_a13fee57d19a34f658d7373492a8c5df0}{showHelp}}();}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00048}00048         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00049}00049     \}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00050}00050     }
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00051}00051     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00052}00052 \}}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00054}\mbox{\hyperlink{classInterface_a13fee57d19a34f658d7373492a8c5df0}{00054}} \textcolor{keywordtype}{void} \mbox{\hyperlink{classInterface_a13fee57d19a34f658d7373492a8c5df0}{Interface::showHelp}}() \{}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00055}00055     std::cout << \textcolor{stringliteral}{"{}Использование: client [OPTIONS]\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00056}00056     std::cout << \textcolor{stringliteral}{"{}Обязательные параметры:\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00057}00057     std::cout << \textcolor{stringliteral}{"{}  -\/a ADDRESS    Адрес сервера\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00058}00058     std::cout << \textcolor{stringliteral}{"{}  -\/i FILE       Входной файл с векторами\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00059}00059     std::cout << \textcolor{stringliteral}{"{}  -\/o FILE       Выходной файл для результатов\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00060}00060     std::cout << \textcolor{stringliteral}{"{}Опциональные параметры:\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00061}00061     std::cout << \textcolor{stringliteral}{"{}  -\/p PORT       Порт сервера (по умолчанию: 33333)\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00062}00062     std::cout << \textcolor{stringliteral}{"{}  -\/c FILE       Файл конфигурации (по умолчанию: /.config/vclient.conf)\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00063}00063     std::cout << \textcolor{stringliteral}{"{}  -\/h            Показать эту справку\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00064}00064     std::cout << \textcolor{stringliteral}{"{}\(\backslash\)nПример:\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00065}00065     std::cout << \textcolor{stringliteral}{"{}  ./client -\/a 127.0.0.1 -\/i vectors.bin -\/o results.bin -\/p 33333\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{interface_8cpp_source_l00066}00066 \}}
+
+\end{DoxyCode}

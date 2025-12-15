@@ -1,0 +1,21 @@
+\hypertarget{linux__authenticator_8h_source}{}\doxysection{linux\+\_\+authenticator.\+h}
+\mbox{\hyperlink{linux__authenticator_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00010}00010 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00011}00011 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00019}\mbox{\hyperlink{classLinuxAuthenticator}{00019}} \textcolor{keyword}{class }\mbox{\hyperlink{classLinuxAuthenticator}{LinuxAuthenticator}} \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00020}00020 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00027}00027     \textcolor{keyword}{static} std::string \mbox{\hyperlink{classLinuxAuthenticator_a3bbeac844a52f9ddc58d362b1a73e657}{computeSHA224}}(\textcolor{keyword}{const} std::string\& data);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00028}00028     }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00036}00036     \textcolor{keyword}{static} std::string \mbox{\hyperlink{classLinuxAuthenticator_a3bbeac844a52f9ddc58d362b1a73e657}{computeSHA224}}(\textcolor{keyword}{const} std::string\& salt, \textcolor{keyword}{const} std::string\& password);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00037}00037     }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00038}00038 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00045}00045     \textcolor{keyword}{static} \textcolor{keywordtype}{int} \mbox{\hyperlink{classLinuxAuthenticator_ae6044e8f55b65bbff25714ccb39065a8}{createCryptoSocket}}(\textcolor{keyword}{const} std::string\& algorithm);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00046}00046     }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00054}00054     \textcolor{keyword}{static} std::vector<uint8\_t> \mbox{\hyperlink{classLinuxAuthenticator_ab411c4fe3360ed9e844c8b686614ca6c}{computeHash}}(\textcolor{keywordtype}{int} crypto\_sock, \textcolor{keyword}{const} std::string\& data);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8h_source_l00055}00055 \};}
+
+\end{DoxyCode}

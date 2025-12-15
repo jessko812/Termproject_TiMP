@@ -1,0 +1,11 @@
+<map id="main.cpp" name="main.cpp">
+<area shape="rect" id="node1" title="Главный модуль сетевого клиента" alt="" coords="193,5,276,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,85,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="110,80,197,107"/>
+<area shape="rect" id="node4" href="$interface_8h.html" title="Заголовочный файл для обработки параметров командной строки" alt="" coords="178,155,270,181"/>
+<area shape="rect" id="node6" href="$file__handler_8h.html" title="Заголовочный файл класса FileHandler для работы с файлами" alt="" coords="396,155,505,181"/>
+<area shape="rect" id="node9" href="$network__manager_8h.html" title="Заголовочный файл класса NetworkManager для сетевого взаимодействия" alt="" coords="273,80,423,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="279,229,337,256"/>
+<area shape="rect" id="node7" title=" " alt="" coords="495,229,558,256"/>
+<area shape="rect" id="node8" title=" " alt="" coords="389,229,456,256"/>
+</map>

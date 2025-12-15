@@ -1,0 +1,71 @@
+\hypertarget{test__interface_8cpp_source}{}\doxysection{test\+\_\+interface.\+cpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include <UnitTest++/UnitTest++.h>}}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{interface_8h}{interface.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00006}00006 \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}}() \{}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00007}00007     \textcolor{keywordflow}{return} UnitTest::RunAllTests();}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00008}00008 \}}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00010}00010 \textcolor{keywordtype}{char}* strdup(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* s) \{}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00011}00011     \textcolor{keywordtype}{size\_t} len = strlen(s) + 1;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00012}00012     \textcolor{keywordtype}{char}* copy = \textcolor{keyword}{new} \textcolor{keywordtype}{char}[len];}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00013}00013     std::strcpy(copy, s);}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00014}00014     \textcolor{keywordflow}{return} copy;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00015}00015 \}}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00017}00017 SUITE(InterfaceTests) \{}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00018}00018     TEST(POSITIVE\_HelpFlag) \{}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00019}00019         \textcolor{keywordtype}{char}* arg0 = strdup(\textcolor{stringliteral}{"{}./client"{}});}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00020}00020         \textcolor{keywordtype}{char}* arg1 = strdup(\textcolor{stringliteral}{"{}-\/h"{}});}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00021}00021         \textcolor{keywordtype}{char}* argv[] = \{arg0, arg1, \textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00022}00022         \textcolor{keywordtype}{int} argc = 2;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00023}00023         }
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00024}00024         \mbox{\hyperlink{structParams}{Params}} params;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00025}00025         \textcolor{keywordtype}{bool} result = \mbox{\hyperlink{classInterface_acacb3337d481b58de472c5a3d1d98969}{Interface::parseCommandLine}}(argc, argv, params);}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00027}00027         CHECK(!result);}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00028}00028         }
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00029}00029         \textcolor{keyword}{delete}[] arg0;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00030}00030         \textcolor{keyword}{delete}[] arg1;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00031}00031     \}}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00033}00033     TEST(NEGATIVE\_MissingRequiredParams) \{}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00034}00034         \textcolor{keywordtype}{char}* arg0 = strdup(\textcolor{stringliteral}{"{}./client"{}});}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00035}00035         \textcolor{keywordtype}{char}* arg1 = strdup(\textcolor{stringliteral}{"{}-\/a"{}});}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00036}00036         \textcolor{keywordtype}{char}* arg2 = strdup(\textcolor{stringliteral}{"{}127.0.0.1"{}});}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00037}00037         \textcolor{keywordtype}{char}* argv[] = \{arg0, arg1, arg2, \textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00038}00038         \textcolor{keywordtype}{int} argc = 3;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00039}00039         }
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00040}00040         \mbox{\hyperlink{structParams}{Params}} params;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00041}00041         \textcolor{keywordtype}{bool} result = \mbox{\hyperlink{classInterface_acacb3337d481b58de472c5a3d1d98969}{Interface::parseCommandLine}}(argc, argv, params);}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00042}00042       }
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00043}00043         CHECK(!result);}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00044}00044         }
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00045}00045         \textcolor{keyword}{delete}[] arg0;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00046}00046         \textcolor{keyword}{delete}[] arg1;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00047}00047         \textcolor{keyword}{delete}[] arg2;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00048}00048     \}}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00049}00049 }
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00050}00050     TEST(NEGATIVE\_InvalidOption) \{}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00051}00051         \textcolor{keywordtype}{char}* arg0 = strdup(\textcolor{stringliteral}{"{}./client"{}});}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00052}00052         \textcolor{keywordtype}{char}* arg1 = strdup(\textcolor{stringliteral}{"{}-\/x"{}});}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00053}00053         \textcolor{keywordtype}{char}* arg2 = strdup(\textcolor{stringliteral}{"{}value"{}});}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00054}00054         \textcolor{keywordtype}{char}* argv[] = \{arg0, arg1, arg2, \textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00055}00055         \textcolor{keywordtype}{int} argc = 3;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00056}00056         }
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00057}00057         \mbox{\hyperlink{structParams}{Params}} params;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00058}00058         \textcolor{keywordtype}{bool} result = \mbox{\hyperlink{classInterface_acacb3337d481b58de472c5a3d1d98969}{Interface::parseCommandLine}}(argc, argv, params);}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00059}00059         }
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00060}00060         CHECK(!result);}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00061}00061         }
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00062}00062         \textcolor{keyword}{delete}[] arg0;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00063}00063         \textcolor{keyword}{delete}[] arg1;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00064}00064         \textcolor{keyword}{delete}[] arg2;}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00065}00065     \}}
+\DoxyCodeLine{\Hypertarget{test__interface_8cpp_source_l00066}00066 \}}
+
+\end{DoxyCode}

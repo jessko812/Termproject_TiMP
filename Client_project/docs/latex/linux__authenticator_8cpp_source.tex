@@ -1,0 +1,109 @@
+\hypertarget{linux__authenticator_8cpp_source}{}\doxysection{linux\+\_\+authenticator.\+cpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{linux__authenticator_8h}{linux\_authenticator.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <linux/if\_alg.h>}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <sys/socket.h>}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include <cstring>}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include <iomanip>}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00011}00011 \textcolor{preprocessor}{\#include <cctype>}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00013}\mbox{\hyperlink{classLinuxAuthenticator_ae6044e8f55b65bbff25714ccb39065a8}{00013}} \textcolor{keywordtype}{int} \mbox{\hyperlink{classLinuxAuthenticator_ae6044e8f55b65bbff25714ccb39065a8}{LinuxAuthenticator::createCryptoSocket}}(\textcolor{keyword}{const} std::string\& algorithm) \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00014}00014     \textcolor{comment}{// Создание криптосокета}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00015}00015     \textcolor{keywordtype}{int} sock = socket(AF\_ALG, SOCK\_SEQPACKET, 0);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00016}00016     \textcolor{keywordflow}{if} (sock == -\/1) \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00017}00017         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Ошибка создания криптосокета"{}});}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00018}00018     \}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00020}00020     \textcolor{comment}{// Заполнение структуры для хеш-\/функции}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00021}00021     \textcolor{keyword}{struct }sockaddr\_alg sa = \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00022}00022         .salg\_family = AF\_ALG,}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00023}00023         .salg\_type = \textcolor{stringliteral}{"{}hash"{}},}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00024}00024     \};}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00025}00025     }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00026}00026     \textcolor{comment}{// копирование имени алгоритма}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00027}00027     std::strncpy(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(sa.salg\_name), algorithm.c\_str(), \textcolor{keyword}{sizeof}(sa.salg\_name) -\/ 1);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00028}00028     sa.salg\_name[\textcolor{keyword}{sizeof}(sa.salg\_name) -\/ 1] = \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00030}00030     \textcolor{comment}{// Привязка сокета к алгоритму}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00031}00031     \textcolor{keywordflow}{if} (bind(sock, (\textcolor{keyword}{struct} sockaddr*)\&sa, \textcolor{keyword}{sizeof}(sa)) == -\/1) \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00032}00032         close(sock);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00033}00033         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Ошибка привязки криптосокета к алгоритму: "{}} + algorithm);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00034}00034     \}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00036}00036     \textcolor{keywordflow}{return} sock;}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00037}00037 \}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00039}\mbox{\hyperlink{classLinuxAuthenticator_ab411c4fe3360ed9e844c8b686614ca6c}{00039}} std::vector<uint8\_t> \mbox{\hyperlink{classLinuxAuthenticator_ab411c4fe3360ed9e844c8b686614ca6c}{LinuxAuthenticator::computeHash}}(\textcolor{keywordtype}{int} crypto\_sock, \textcolor{keyword}{const} std::string\& data) \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00040}00040     \textcolor{comment}{// Принятие соединения для криптоопераций}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00041}00041     \textcolor{keywordtype}{int} op\_sock = accept(crypto\_sock, \textcolor{keyword}{nullptr}, \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00042}00042     \textcolor{keywordflow}{if} (op\_sock == -\/1) \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00043}00043         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Ошибка принятия криптосоединения"{}});}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00044}00044     \}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00046}00046     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00047}00047         \textcolor{comment}{// Передача данных для вычисления хеша}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00048}00048         ssize\_t sent = send(op\_sock, data.c\_str(), data.length(), 0);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00049}00049         \textcolor{keywordflow}{if} (sent != \textcolor{keyword}{static\_cast<}ssize\_t\textcolor{keyword}{>}(data.length())) \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00050}00050             close(op\_sock);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00051}00051             \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Ошибка передачи данных для хеширования"{}});}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00052}00052         \}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00054}00054         \textcolor{comment}{// Получение результата }}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00055}00055         std::vector<uint8\_t> hash(28); \textcolor{comment}{// SHA-\/224 produces 28 bytes}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00056}00056         ssize\_t received = recv(op\_sock, hash.data(), hash.size(), 0);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00057}00057         \textcolor{keywordflow}{if} (received != \textcolor{keyword}{static\_cast<}ssize\_t\textcolor{keyword}{>}(hash.size())) \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00058}00058             close(op\_sock);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00059}00059             \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Ошибка получения хеша"{}});}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00060}00060         \}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00061}00061 }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00062}00062         close(op\_sock);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00063}00063         \textcolor{keywordflow}{return} hash;}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00064}00064 }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00065}00065     \} \textcolor{keywordflow}{catch} (...) \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00066}00066         close(op\_sock);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00067}00067         \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00068}00068     \}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00069}00069 \}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00071}\mbox{\hyperlink{classLinuxAuthenticator_a3bbeac844a52f9ddc58d362b1a73e657}{00071}} std::string \mbox{\hyperlink{classLinuxAuthenticator_a3bbeac844a52f9ddc58d362b1a73e657}{LinuxAuthenticator::computeSHA224}}(\textcolor{keyword}{const} std::string\& data) \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00072}00072     \textcolor{keywordtype}{int} crypto\_sock = -\/1;}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00073}00073     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00074}00074         \textcolor{comment}{// Подготовка: создание криптосокета}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00075}00075         crypto\_sock = \mbox{\hyperlink{classLinuxAuthenticator_ae6044e8f55b65bbff25714ccb39065a8}{createCryptoSocket}}(\textcolor{stringliteral}{"{}sha224"{}});}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00076}00076         }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00077}00077         \textcolor{comment}{// Вычисление: передача данных и получение хеша}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00078}00078         std::vector<uint8\_t> hash = \mbox{\hyperlink{classLinuxAuthenticator_ab411c4fe3360ed9e844c8b686614ca6c}{computeHash}}(crypto\_sock, data);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00079}00079         }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00080}00080         \textcolor{comment}{// Преобразование в hex-\/строку}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00081}00081         std::stringstream ss;}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00082}00082         \textcolor{keywordflow}{for} (uint8\_t \textcolor{keywordtype}{byte} : hash) \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00083}00083             ss << std::hex << std::setw(2) << std::setfill('0') << static\_cast<int>(\textcolor{keywordtype}{byte});}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00084}00084         \}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00085}00085         }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00086}00086         close(crypto\_sock);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00087}00087         \textcolor{keywordflow}{return} ss.str();}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00089}00089     \} \textcolor{keywordflow}{catch} (...) \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00090}00090         \textcolor{keywordflow}{if} (crypto\_sock != -\/1) \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00091}00091             close(crypto\_sock);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00092}00092         \}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00093}00093         \textcolor{keywordflow}{throw};}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00094}00094     \}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00095}00095 \}}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00097}\mbox{\hyperlink{classLinuxAuthenticator_a43ff3b3301d0bb6819bcec9fded842dc}{00097}} std::string \mbox{\hyperlink{classLinuxAuthenticator_a3bbeac844a52f9ddc58d362b1a73e657}{LinuxAuthenticator::computeSHA224}}(\textcolor{keyword}{const} std::string\& salt, \textcolor{keyword}{const} std::string\& password) \{}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00098}00098     \textcolor{comment}{// Конкатенация соли и пароля }}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00099}00099     std::string data = salt + password;}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00100}00100     std::cout << \textcolor{stringliteral}{"{}Вычисление SHA-\/224 для соли + пароля..."{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00101}00101     std::string hash = \mbox{\hyperlink{classLinuxAuthenticator_a3bbeac844a52f9ddc58d362b1a73e657}{computeSHA224}}(data);}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00102}00102     }
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00103}00103     \textcolor{keywordflow}{return} hash;}
+\DoxyCodeLine{\Hypertarget{linux__authenticator_8cpp_source_l00104}00104 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,80 @@
+\hypertarget{main_8cpp}{}\doxysection{Файл main.\+cpp}
+\label{main_8cpp}\index{main.cpp@{main.cpp}}
+
+
+Главный модуль сетевого клиента  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$exception$>$}\newline
+{\ttfamily \#include \char`\"{}interface.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}file\+\_\+handler.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}network\+\_\+manager.\+h\char`\"{}}\newline
+Граф включаемых заголовочных файлов для main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Функции}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Точка входа в программу \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Главный модуль сетевого клиента 
+
+\begin{DoxyAuthor}{Автор}
+Филимонов А.\+А. 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Версия}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Дата}
+15.\+12.\+2025 
+\end{DoxyDate}
+\begin{DoxyCopyright}{Авторство}
+ИБСТ ПГУ
+\end{DoxyCopyright}
+Программа подключается к серверу, выполняет аутентификацию, отправляет векторы данных и сохраняет результаты вычислений 
+
+См. определение в файле \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}
+
+
+
+\doxysubsection{Функции}
+\mbox{\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Точка входа в программу 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em argc} & Количество аргументов командной строки \\
+\hline
+{\em argv} & Массив аргументов командной строки \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+0 -\/ успешное завершение, 1 -\/ ошибка выполнения
+\end{DoxyReturn}
+Основной алгоритм работы программы\+:
+\begin{DoxyEnumerate}
+\item Разбор параметров командной строки
+\item Чтение учетных данных и векторов из файлов
+\item Подключение к серверу и аутентификация
+\item Отправка векторов и получение результатов
+\item Сохранение результатов в файл 
+\end{DoxyEnumerate}
+
+См. определение в файле \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}} строка \mbox{\hyperlink{main_8cpp_source_l00030}{30}}
+

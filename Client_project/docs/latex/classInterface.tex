@@ -1,0 +1,74 @@
+\hypertarget{classInterface}{}\doxysection{Класс Interface}
+\label{classInterface}\index{Interface@{Interface}}
+
+
+Класс для разбора командной строки и отображения справки  
+
+
+
+
+{\ttfamily \#include $<$interface.\+h$>$}
+
+\doxysubsection*{Открытые статические члены}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{classInterface_acacb3337d481b58de472c5a3d1d98969}{parse\+Command\+Line}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]}, \mbox{\hyperlink{structParams}{Params}} \&params)
+\begin{DoxyCompactList}\small\item\em Разбирает аргументы командной строки \end{DoxyCompactList}\item 
+static void \mbox{\hyperlink{classInterface_a13fee57d19a34f658d7373492a8c5df0}{show\+Help}} ()
+\begin{DoxyCompactList}\small\item\em Отображает справку по использованию программы \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для разбора командной строки и отображения справки 
+
+См. определение в файле \mbox{\hyperlink{interface_8h_source}{interface.\+h}} строка \mbox{\hyperlink{interface_8h_source_l00029}{29}}
+
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classInterface_acacb3337d481b58de472c5a3d1d98969}\label{classInterface_acacb3337d481b58de472c5a3d1d98969}} 
+\index{Interface@{Interface}!parseCommandLine@{parseCommandLine}}
+\index{parseCommandLine@{parseCommandLine}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{parseCommandLine()}{parseCommandLine()}}
+{\footnotesize\ttfamily bool Interface\+::parse\+Command\+Line (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]},  }\item[{\mbox{\hyperlink{structParams}{Params}} \&}]{params }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Разбирает аргументы командной строки 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em argc} & Количество аргументов \\
+\hline
+{\em argv} & Массив аргументов \\
+\hline
+{\em params} & Структура для сохранения разобранных параметров \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+true -\/ успешный разбор, false -\/ требуется выход (помощь или ошибка) 
+\end{DoxyReturn}
+
+
+См. определение в файле \mbox{\hyperlink{interface_8cpp_source}{interface.\+cpp}} строка \mbox{\hyperlink{interface_8cpp_source_l00007}{7}}
+
+\mbox{\Hypertarget{classInterface_a13fee57d19a34f658d7373492a8c5df0}\label{classInterface_a13fee57d19a34f658d7373492a8c5df0}} 
+\index{Interface@{Interface}!showHelp@{showHelp}}
+\index{showHelp@{showHelp}!Interface@{Interface}}
+\doxysubsubsection{\texorpdfstring{showHelp()}{showHelp()}}
+{\footnotesize\ttfamily void Interface\+::show\+Help (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Отображает справку по использованию программы 
+
+
+
+См. определение в файле \mbox{\hyperlink{interface_8cpp_source}{interface.\+cpp}} строка \mbox{\hyperlink{interface_8cpp_source_l00054}{54}}
+
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{interface_8h}{interface.\+h}}\item 
+interface.\+cpp\end{DoxyCompactItemize}

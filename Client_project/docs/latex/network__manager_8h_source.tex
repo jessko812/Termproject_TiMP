@@ -1,0 +1,38 @@
+\hypertarget{network__manager_8h_source}{}\doxysection{network\+\_\+manager.\+h}
+\mbox{\hyperlink{network__manager_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00001}00001 }
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00010}00010 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00011}00011 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00012}00012 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00013}00013 \textcolor{preprocessor}{\#include <cstdint>}}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00014}00014 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{file__handler_8h}{file\_handler.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00021}\mbox{\hyperlink{classNetworkManager}{00021}} \textcolor{keyword}{class }\mbox{\hyperlink{classNetworkManager}{NetworkManager}} \{}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00022}00022 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00023}\mbox{\hyperlink{classNetworkManager_affe013e540b567556a5288403b53a208}{00023}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{classNetworkManager_affe013e540b567556a5288403b53a208}{sockfd}};                 }
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00024}\mbox{\hyperlink{classNetworkManager_a065fc6b77d4710a4fa7424ee0a789076}{00024}}     std::string \mbox{\hyperlink{classNetworkManager_a065fc6b77d4710a4fa7424ee0a789076}{address}};        }
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00025}\mbox{\hyperlink{classNetworkManager_af7ae9d3adcce857e5e2ce4824c3bb48e}{00025}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{classNetworkManager_af7ae9d3adcce857e5e2ce4824c3bb48e}{port}};                   }
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00033}00033     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNetworkManager_af84c3164e1369415cfb327a47f24c0d1}{sendData}}(\textcolor{keyword}{const} \textcolor{keywordtype}{void}* data, \textcolor{keywordtype}{size\_t} size);}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00034}00034     }
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00041}00041     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNetworkManager_a5486fa9c8c2d7536e6430b60a4e49840}{receiveData}}(\textcolor{keywordtype}{void}* data, \textcolor{keywordtype}{size\_t} size);}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00042}00042     }
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00048}00048     std::string \mbox{\hyperlink{classNetworkManager_aedf328bafafaa65bbc910d515cbae78a}{receiveString}}();}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00049}00049     }
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00055}00055     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNetworkManager_a830e400508c7c32541d43dac4d8aedd2}{sendString}}(\textcolor{keyword}{const} std::string\& str);}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00057}00057 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00063}00063     \mbox{\hyperlink{classNetworkManager_a5bb24a522d1a4f73a9cfee0ea40b7926}{NetworkManager}}(\textcolor{keyword}{const} std::string\& addr, \textcolor{keywordtype}{int} p);}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00064}00064     }
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00069}00069     \mbox{\hyperlink{classNetworkManager_a2cfe4223139cf58587a9f066b956cb23}{\string~NetworkManager}}();}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00070}00070     }
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00076}00076     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classNetworkManager_a9016d412d2c4a1ecb33b5c7a1783721d}{connect}}();}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00077}00077     }
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00081}00081     \textcolor{keywordtype}{void} \mbox{\hyperlink{classNetworkManager_a751f87add468a5ddc70c4087ab80533f}{disconnect}}();}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00082}00082     }
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00090}00090     \textcolor{keywordtype}{bool} \mbox{\hyperlink{classNetworkManager_af5326f1181efd375e9480c488715c485}{authenticate}}(\textcolor{keyword}{const} std::string\& login, \textcolor{keyword}{const} std::string\& password);}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00091}00091     }
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00098}00098     std::vector<int16\_t> \mbox{\hyperlink{classNetworkManager_a041b59a0dce002a17251dad714d652ce}{sendVectors}}(\textcolor{keyword}{const} \mbox{\hyperlink{structVectorData}{VectorData}}\& vectors);}
+\DoxyCodeLine{\Hypertarget{network__manager_8h_source_l00099}00099 \};}
+
+\end{DoxyCode}
